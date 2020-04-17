@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Virus Confirmed Cases</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../../css/gtvg.css" th:href="@{/css/gtvg.css}" />
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container mx-auto">
+        <h1>Confirmed cases in US of Corona-Virus per State</h1>
+
+        <p th:text="${totalCases}"></p>
+
+
+        <table class="table-auto">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2">STATE</th>
+                    <th class="px-4 py-2">COUNTRY</th>
+                    <th class="px-4 py-2">CONFIRMED CASES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="locationStat : ${locationStats}">
+                    <td th:text="${locationStat.state}" class="border px-4 py-2"></td>
+                    <td th:text="${locationStat.country}" class="border px-4 py-2"></td>
+                    <td th:text="${locationStat.confirmedCases}" class="border px-4 py-2"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>
