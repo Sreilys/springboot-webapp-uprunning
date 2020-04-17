@@ -17,6 +17,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -45,13 +46,14 @@ public class VirusDataService {
             LocationStats locationStat = new LocationStats();
             String state = record.get("Province_State");
             String country = record.get("Country_Region");
-            String confirmed = record.get("Confirmed");
+            int confirmed = Integer.parseInt(record.get("Confirmed"));
             locationStat.setState(state);
             locationStat.setCountry(country);
             locationStat.setConfirmedCases(confirmed);
-            System.out.println(locationStat.toString());
             newStats.add(locationStat);
         }
+
+        Collections.sort(newStats, Collections.reverseOrder());
 
         this.allStats = newStats;
     }

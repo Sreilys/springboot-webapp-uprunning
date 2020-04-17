@@ -1,9 +1,9 @@
 package com.sabrina.virustracker.models;
 
-public class LocationStats {
+public class LocationStats implements Comparable<LocationStats> {
     private String state;
     private String country;
-    private String confirmedCases;
+    private int confirmedCases;
 
     public String getState() {
         return state;
@@ -21,12 +21,17 @@ public class LocationStats {
         this.country = country;
     }
 
-    public String getConfirmedCases() {
+    public int getConfirmedCases() {
         return confirmedCases;
     }
 
-    public void setConfirmedCases(String confirmedCases) {
+    public void setConfirmedCases(int confirmedCases) {
         this.confirmedCases = confirmedCases;
+    }
+
+    @Override
+    public int compareTo(LocationStats location) {
+        return this.confirmedCases - location.confirmedCases;
     }
 
     @Override

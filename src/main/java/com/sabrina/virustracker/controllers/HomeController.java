@@ -18,7 +18,7 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model) {
         List<LocationStats> allStats = virusDataService.getAllStats();
-        int totalCases = allStats.stream().mapToInt(stat -> Integer.parseInt(stat.getConfirmedCases())).sum();
+        int totalCases = allStats.stream().mapToInt(stat -> stat.getConfirmedCases()).sum();
         model.addAttribute("locationStats", allStats);
         model.addAttribute("totalCases", totalCases);
         return "home";
